@@ -92,3 +92,21 @@ def add_entry():
 	db.commit()
 	flash('New entry was successfully posted')
 	return redirect(url_for('show_entries'))
+
+'''Login method. If successful, the session log_in key is set True
+and we redirect to the show_entries page. Otherwise, we bounce back to
+the login page
+'''
+@app.route('/login', methods = ['GET','POST'])
+def login():
+	error = None
+	if request.method == 'POST':
+		if request.form['username'] != app.config['USERNAME']:
+			error = 'Invalid username'
+		elif request.form['password'] != app.config['PASSWORD']:
+			error = 'Invalid password'
+		else:
+			session['logged_in'] = True
+			flash('You were logged in')
+			return redirect(url_for('show_entries'))
+	return render_template('login.html', error = error)
