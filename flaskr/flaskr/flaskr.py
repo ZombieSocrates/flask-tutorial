@@ -19,3 +19,9 @@ app.config.update(new_config)
 # environment variable.  The silent option implies that flask
 # will ignore this if FLASKR_SETTINGS is not present
 app.config.from_envvar('FLASKR_SETTINGS', silent = True)
+
+def connect_db():
+	'''connects to app.config['DATABASE']'''
+	rv = sqlite3.connect(app.config['DATABASE'])
+	rv.row_factory = sqlite3.Row # Treats rows as dictionaries instead of tuples
+	return rv
