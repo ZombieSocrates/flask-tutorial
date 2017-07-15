@@ -93,7 +93,7 @@ def add_entry():
 	flash('New entry was successfully posted')
 	return redirect(url_for('show_entries'))
 
-'''Login method. If successful, the session log_in key is set True
+'''Login method. If successful, the session logged_in key is set True
 and we redirect to the show_entries page. Otherwise, we bounce back to
 the login page
 '''
@@ -110,3 +110,12 @@ def login():
 			flash('You were logged in')
 			return redirect(url_for('show_entries'))
 	return render_template('login.html', error = error)
+
+'''Logout method removes the logged_in key from the session
+dictionary
+'''
+@app.route('/logout')
+def logout():
+	session.pop('logged_in',None)
+	flash('You were logged out')
+	return redirect(url_for('show_entries'))
