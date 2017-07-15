@@ -78,4 +78,17 @@ def show_entries():
 	entries = cur.fetchall()
 	return render_template('show_entries.html', entries = entries)
 
-# @app.route('/add', methods = ['POST'])
+'''Adds new entries from the contents of a post request, so long
+as the user is logged in. Redirects back to show_entries if everything
+worked fine. Question marks prevent against SQL injection
+'''
+@app.route('/add', methods = ['POST'])
+def add_entry():
+	if not session.get('logged_in'):
+		abort(401)
+	db = get_db()
+	db.execute('insert into entries (title, text) values (?, ?)',
+				 [request.form['title'], request.form['text']])
+	db.commit()
+	flash('New entry was successfully posted')
+	return redirect(url_for('show_entries'))
