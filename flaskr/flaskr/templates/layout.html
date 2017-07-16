@@ -10,9 +10,11 @@ The body block can be replaced by any body block in a child template
   <h1>Flaskr</h1>
   <div class=metanav>
   {% if not session.logged_in %}
-    <a href="{{ url_for('login') }}">log in</a>
+    <li><a href="{{ url_for('login') }}">log in</a></li>
+    <li><a href="{{ url_for('cats') }}">look at kitties</a></li>
   {% else %}
     <a href="{{ url_for('logout') }}">log out</a>
+    <li><a href="{{ url_for('cats') }}">look at kitties</a></li>
   {% endif %}
   </div>
   {% for message in get_flashed_messages() %}
