@@ -121,6 +121,10 @@ def logout():
 	flash('You were logged out')
 	return redirect(url_for('show_entries'))
 
+'''Chooses two random cat images from the flaskr/static/images
+directory and uses name and file information to populate the
+cats.html template
+'''
 @app.route('/cats')
 def cats():
 	cat_names = {'Black':'Mr. Waffles',
@@ -128,7 +132,6 @@ def cats():
 				 'Ocicat':'Leroy Jenkins',
 				 'Siamese':'Fluffy Mewington III',
 				 'Tortoiseshell':'Killer'}
-
 	cat_files = os.listdir('flaskr/static/images')
 	chosen_cats = np.random.choice(cat_files, size = 2, replace = False)
 	data = {}
