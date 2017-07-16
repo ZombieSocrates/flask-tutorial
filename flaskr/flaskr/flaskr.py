@@ -119,3 +119,8 @@ def logout():
 	session.pop('logged_in',None)
 	flash('You were logged out')
 	return redirect(url_for('show_entries'))
+
+
+@app.route('/cats')
+def cats():
+	return render_template('cats.html')
