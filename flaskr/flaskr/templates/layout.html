@@ -5,7 +5,12 @@ The body block can be replaced by any body block in a child template
 -->
 <!doctype html>
 <title>Flaskr</title>
+{% block css %}
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"-->
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename = 'style.css') }}">
+{% endblock css %}
+
+
 <div class=page>
   <h1>Flaskr</h1>
   <div class=metanav>
