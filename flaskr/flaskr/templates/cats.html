@@ -6,11 +6,11 @@
     <div class=col-md-4>
       <div class="panel panel-default">
         <div class=panel-heading>
-          <h2 class=panel-title>Fluffy</h2>
+          <h2 class=panel-title>{{ data['cat_0_name'] }}</h2>
         </div>
         <div class='panel-body'>
           <img style ='height: 100%; width: 100%; object-fit: contain'
-           class='thumbnail' src="{{ url_for('static', filename='images/MaineCoon.png') }}">
+           class='thumbnail' src="{{ url_for('static', filename=data['cat_0_img']) }}">
         </div>
       </div>
     </div>
@@ -18,11 +18,11 @@
     <div class=col-md-4>
       <div class="panel panel-default">
         <div class=panel-heading>
-          <h2 class=panel-title>Leroy Jenkins</h2>
+          <h2 class=panel-title>{{ data['cat_1_name'] }}</h2>
         </div>
         <div class='panel-body'>
           <img style ='height: 100%; width: 100%; object-fit: contain' 
-           class='thumbnail' src="{{ url_for('static', filename='images/Ocicat.png') }}">
+           class='thumbnail' src="{{ url_for('static', filename=data['cat_1_img']) }}">
         </div>
       </div>
     </div>
