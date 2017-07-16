@@ -1,5 +1,6 @@
 import os
 import sqlite3
+import numpy as np
 from flask import Flask, request, session, g, redirect, url_for, abort, \
 	render_template, flash
 
@@ -120,7 +121,21 @@ def logout():
 	flash('You were logged out')
 	return redirect(url_for('show_entries'))
 
-
 @app.route('/cats')
 def cats():
-	return render_template('cats.html')
+	cat_names = {'Black':'Mr. Waffles',
+				 'MaineCoon':'Sassy',
+				 'Ocicat':'Leroy Jenkins',
+				 'Siamese':'Fluffy Mewington III',
+				 'Tortoiseshell':'Killer'}
+
+	cat_files = os.listdir('flaskr/static/images')
+	chosen_cats = np.random.choice(cat_files, size = 2, replace = False)
+	data = {}
+	for i, cat in enumerate(chosen_cats):
+		cat_breed = cat.split('.')[0]
+		cat_name = cat_names[cat_breed]
+		cat_img = os.path.join('images', cat)
+		data['cat_{}_name'.format(i)] = cat_name
+		data['cat_{}_img'.format(i)] = cat_img
+	return render_template('cats.html', data = data)
