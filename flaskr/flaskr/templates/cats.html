@@ -1,28 +1,35 @@
+<!--If you want to have the cat images be rescaled to the exact same size and
+then change each of the img tags to have the following attributes
+style='margin: 0 auto'
+width=400px 
+height=400px
+-->
+
 {% extends "layout.html" %}
 {% block body %}
 <div class=container>
   <div class=row>
 
-    <div class=col-md-4>
+    <div class=col-md-6>
       <div class="panel panel-default">
         <div class=panel-heading>
           <h2 class=panel-title align=center>{{ data['cat_0_name'] }}</h2>
         </div>
         <div class='panel-body'>
-          <img style ='height: 100%; width: 100%; object-fit: contain'
-           class='thumbnail' src="{{ url_for('static', filename=data['cat_0_img']) }}">
+          <img style='height:100%; width:100%; object-fit: contain' class='thumbnail'
+           src="{{ url_for('static', filename=data['cat_0_img']) }}">
         </div>
       </div>
     </div>
 
-    <div class=col-md-4>
+    <div class=col-md-6>
       <div class="panel panel-default">
         <div class=panel-heading>
           <h2 class=panel-title align=center>{{ data['cat_1_name'] }}</h2>
         </div>
         <div class='panel-body'>
-          <img style ='height: 100%; width: 100%; object-fit: contain' 
-           class='thumbnail' src="{{ url_for('static', filename=data['cat_1_img']) }}">
+          <img style='height:100%; width:100%; object-fit: contain' class='thumbnail'
+           src="{{ url_for('static', filename=data['cat_1_img']) }}">
         </div>
       </div>
     </div>
